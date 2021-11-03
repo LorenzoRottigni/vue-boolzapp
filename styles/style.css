@@ -1,0 +1,75 @@
+body{
+    background-color: #DADBD5;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+header{
+    height: 10vh;
+    background-color: #0B9588;
+}
+img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+i{
+    color: #B1B1B1
+}
+h6{
+    color: grey
+}
+.underline{
+    text-decoration: underline;
+}
+.circle-white{
+    background-color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle-white i{
+    color: #8FDAFA;
+}
+#application-container{
+    background-color: white;
+    margin-top: -8vh;
+}
+section.application-side-section,
+section.application-main-section{
+    height: 96vh;
+
+}
+
+.application-side-section-header,
+.application-main-section-header{
+    height: 70px;
+    background-color: #EAEAEA;
+}
+.application-side-section-notifications{
+    height: 90px;
+    background-color: #8FDAFA;
+}
+
+.application-side-section-search{
+    height: 50px;
+    background-color: #FAFAFA;
+}
+
+.application-side-section-chat-container{
+    background-color: #FAFAFA;
+}
+
+.application-main-section-chat-container{
+    background-image: url('../images/mine.jpg');
+}
+
+.application-main-section-send-message{
+    height: 70px;
+    background-color: #F3EEEA;
+}
+.application-main-section-send-message i{
+    color: #6B7375
+}
