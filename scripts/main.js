@@ -1,0 +1,2 @@
+
+//alert(chatContainer.scrollHeight)

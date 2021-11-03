@@ -16,9 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <script src="./scripts/app.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+    <script src="./scripts/app.js"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -30,16 +30,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div id="application-container" class="container-fluid px-0 shadow">
+                    <div id="application-container" class="container-fluid px-0 shadow rounded">
                         <div class="row">
-                            <div class="col-4 px-0">
+                            <div class="col-5 px-0">
                                 <section class="application-side-section d-flex flex-column">
                                     <div class="application-side-section-header d-flex align-items-center justify-content-between px-3">
-                                        <div class="application-side-section-header-left d-flex align-items-center gap-3">
+                                        <div class="application-side-section-header-left d-flex align-items-center gap-3 py-3">
                                             <img src="./images/avatar_1.jpg" alt="avatar_1">
-                                            <h5>Nome Utente</h5>
+                                            <h3 class="my-0">Nome Utente</h3>
                                         </div>
-                                        <div class="application-side-section-header-right fs-2 d-flex gap-4">
+                                        <div class="application-side-section-header-right fs-2 d-flex gap-4 py-3">
                                             <i class="fas fa-circle-notch"></i>
                                             <i class="fas fa-comment-alt"></i>
                                             <i class="fas fa-ellipsis-v"></i>
@@ -51,17 +51,27 @@
                                             <i class="fas fa-bell-slash fs-2"></i>
                                         </div>
                                         <div>
-                                            <h5 class="fw-bold my-0">Ricevi notifiche di nuovi messaggi</h5>
-                                            <h6 class="my-0 underline">Attiva notifiche desktop</h6>
+                                            <h3 class="my-0">Ricevi notifiche di nuovi messaggi</h3>
+                                            <h4 class="my-0 underline">Attiva notifiche desktop</h4>
                                         </div>
                                     </div>
-                                    <div class="application-side-section-search px-3">
+                                    <div class="application-side-section-search px-3 my-3">
                                         <div class="input-group mb-3 h-100 d-flex align-items-center">
-                                            <span class="input-group-text"><i class="fas fa-search fs-4"></i></span>
-                                            <input type="text" class="form-control fw-1" placeholder="Search or start a new chat">
+                                            <span class="input-group-text h-100"><i class="fas fa-search fs-4"></i></span>
+                                            <input type="text" class="form-control form-control-lg fw-1 h-100" placeholder="Search or start a new chat">
                                         </div>
                                     </div>
                                     <div class="application-side-section-chat-container flex-grow-1">
+                                        <div v-for="(contact, index) in contacts" @click="setActiveIndex(index)" :class="(index === activeIndex) ? 'active' : ''" class="chat-preview rounded d-flex align-items-center px-3 gap-3">
+                                            <img :src="contact.contactImage" alt="avatar_2">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h3 class="my-0">{{contact.contactName}}</h3>
+                                                <h5 class="my-0 overflow-ellipsis">{{contact.messages[0].message}}</h5>
+                                            </div>
+                                            <h5 class="align-self-start justify-self-end time-container">
+                                                {{contact.messages[0].messageDate}}
+                                            </h5>
+                                        </div>
 
                                     </div>
                                 </section>
@@ -69,15 +79,17 @@
 
 
 
-                            <div class="col-8 px-0">
+                            <div class="col-7 px-0">
                                 <section class="application-main-section d-flex flex-column">
                                     <div class="application-main-section-header px-3 d-flex justify-content-between">
                                         <div class="application-main-section-header-left h-100 d-flex align-items-center gap-3">
-                                            <img src="./images/avatar_1.jpg" alt="avatar_1">
+                                            <img :src="contacts[activeIndex].contactImage" alt="avatar_1">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h5>Michele</h5>
-                                                <h6>Ultimo accesso oggi alle....</h6>
+                                                <h3 class="my-0">{{contacts[activeIndex].contactName}}</h3>
+                                             
+                                                <h4 class="my-0">{{contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].messageDate}}</h4>
                                             </div>
+                                            
                                         </div>
                                         <div class="application-main-section-header-right fs-2 d-flex gap-4 align-items-center">
                                             <i class="fas fa-search"></i>
@@ -85,12 +97,28 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </div>
                                     </div>
-                                    <div class="application-main-section-chat-container flex-grow-1">
-
+                                    <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column p-3 gap-2">
+                                        <!--<div class="msg msg-sent">
+                                            <h3>Hai portato a spasso il cane?</h3>
+                                            <h6>10/01/2021 15:15:22</h6>
+                                        </div>
+                                        <div class="msg msg-recived">
+                                            <h3>Hai portato a spasso il cane?</h3>
+                                            <h6>10/01/2021 15:15:22</h6>
+                                        </div>
+                                        <div class="msg msg-recived">
+                                            <h3>Hai portato a spasso il cane?</h3>
+                                            <h6>10/01/2021 15:15:22</h6>
+                                        </div>-->
+                                        <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'">
+                                            <h3>{{message.message}}</h3>
+                                            <h6>10/01/2021 15:15:22</h6>
+                                        </div>
+                            
                                     </div>
                                     <div class="application-main-section-send-message d-flex fs-2 px-3 gap-3 align-items-center">
                                         <i class="far fa-smile"></i>
-                                        <input type="text" class="form-control form-control-lg" placeholder="Write message...">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Write message..." v-model="newMessage" @keyup.enter="sendMessage('sender'); setTimeout(autoMessage, 1500);">
                                         <i class="fas fa-microphone"></i>
                                     </div>
                                 </section>
@@ -103,6 +131,6 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
+    <script src="scripts/main.js"></script>
   </body>
 </html>
