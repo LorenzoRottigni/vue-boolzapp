@@ -51,14 +51,14 @@
                                             <i class="fas fa-bell-slash fs-2"></i>
                                         </div>
                                         <div>
-                                            <h3 class="my-0">Ricevi notifiche di nuovi messaggi</h3>
-                                            <h4 class="my-0 underline">Attiva notifiche desktop</h4>
+                                            <h3 class="my-0" >Ricevi notifiche di nuovi messaggi</h3>
+                                            <h4 class="my-0 underline " @click="alert('feature not supported')">Attiva notifiche desktop</h4>
                                         </div>
                                     </div>
                                     <div class="application-side-section-search px-3 my-3">
                                         <div class="input-group mb-3 h-100 d-flex align-items-center">
                                             <span class="input-group-text h-100"><i class="fas fa-search fs-4"></i></span>
-                                            <input type="text" class="form-control form-control-lg fw-1 h-100" placeholder="Search or start a new chat"
+                                            <input type="text" id="search-input" class="form-control form-control-lg fw-1 h-100" placeholder="Search or start a new chat"
                                             v-model="substring">
                                         </div>
                                     </div>

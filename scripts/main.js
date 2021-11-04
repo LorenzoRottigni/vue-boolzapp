@@ -12,6 +12,14 @@ window.addEventListener('DOMContentLoaded',()=>{
     addChatButton.addEventListener('click', ()=>{
         chatContainer.style.display = 'block'
         newChatContainer.classList.replace('d-flex','d-none')
+        chatContainer.scrollTop = 0
+    })
+
+
+    const mainSearchIcon = document.querySelector('.application-main-section .fa-search')
+    const inputSearch = document.getElementById('search-input')
+    mainSearchIcon.addEventListener('click',()=>{
+        inputSearch.focus()
     })
 })
 

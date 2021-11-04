@@ -174,16 +174,14 @@ window.addEventListener('DOMContentLoaded',()=>{
                 })
             },
             starMessage(index){
-                this.contacts[this.activeIndex].messages[index].starred = true
+                if(this.contacts[this.activeIndex].messages[index].starred)
+                    this.contacts[this.activeIndex].messages[index].starred = false
+                else
+                    this.contacts[this.activeIndex].messages[index].starred = true
             }
         },
         mounted(){
-           /* const chatContainer = document.querySelector('.application-main-section-chat-container')
-            chatContainer.scrollTop = chatContainer.scrollHeight*/
 
-            //this.addDropdownListeners()
-
-            
         }
     })
 })

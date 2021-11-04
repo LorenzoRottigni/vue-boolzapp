@@ -15,6 +15,9 @@ img{
 i{
     color: #B1B1B1
 }
+i:hover{
+    color: black
+}
 h3{
     font-size: 18px;
     font-weight: normal;
@@ -82,7 +85,12 @@ section.application-main-section{
     height: 100px;
     background-color: #8FDAFA;
 }
-
+.application-side-section-notifications h4{
+    cursor: pointer;
+}
+.application-side-section-notifications h4:hover{
+    color: blue;
+}
 .application-side-section-search{
     height: 50px;
     background-color: white;
