@@ -109,12 +109,18 @@ section.application-main-section{
 }
 .msg .msg-dropdown{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 0px;
 }
+
 .msg .msg-dropdown ul{
     background-color: rgba(204, 200, 200, 0.8);
     border: solid 1px rgb(204, 200, 200);
+    opacity: 0;
+    transition: 1s
+}
+.msg:hover .msg-drodown ul{
+    opacity: 1;
 }
 .msg h6{
     position: absolute;

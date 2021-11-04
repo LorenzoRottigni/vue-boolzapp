@@ -81,9 +81,6 @@
                                     </div>
                                 </section>
                             </div>
-
-
-
                             <div class="col-7 px-0">
                                 <section class="application-main-section d-flex flex-column">
                                     <div class="application-main-section-header px-3 d-flex justify-content-between">
@@ -104,9 +101,11 @@
                                     </div>
                                     <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column p-3 gap-2">
                                         <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'">
+                                            <!--<div class="msg-dropdown d-flex flex-column gap-1 align-items-center" @click='message.dropdownStatus = true'>-->
                                             <div class="msg-dropdown d-flex flex-column gap-1 align-items-center">
                                                 <i class="fas fa-chevron-down"></i>
-                                                <ul class="list-unstyled px-3 rounded shadow">
+                                               <!-- <ul class="list-unstyled px-3 rounded shadow"  :style="opacity: (message.dropdownStatus) ? 1 : 0">-->
+                                                <ul class="list-unstyled px-3 rounded shadow"></ul>
                                                     <li>Delete</li>
                                                     <li>Star</li>
                                                 </ul>
