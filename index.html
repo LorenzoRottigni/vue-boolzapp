@@ -36,10 +36,10 @@
                                 <section class="application-side-section d-flex flex-column">
                                     <div class="application-side-section-header d-flex align-items-center justify-content-between px-3">
                                         <div class="application-side-section-header-left d-flex align-items-center gap-3 py-3">
-                                            <img src="./images/avatar_1.jpg" alt="avatar_1">
-                                            <h3 class="my-0">Nome Utente</h3>
+                                            <img src="./images/avatar_io.jpg" alt="avatar_1">
+                                            <h3 class="my-0">Lorenzo Rottigni</h3>
                                         </div>
-                                        <div class="application-side-section-header-right fs-2 d-flex gap-4 py-3">
+                                        <div class="application-side-section-header-right fs-4 d-flex gap-4 py-3">
                                             <i class="fas fa-circle-notch"></i>
                                             <i class="fas fa-comment-alt"></i>
                                             <i class="fas fa-ellipsis-v"></i>
@@ -58,11 +58,16 @@
                                     <div class="application-side-section-search px-3 my-3">
                                         <div class="input-group mb-3 h-100 d-flex align-items-center">
                                             <span class="input-group-text h-100"><i class="fas fa-search fs-4"></i></span>
-                                            <input type="text" class="form-control form-control-lg fw-1 h-100" placeholder="Search or start a new chat">
+                                            <input type="text" class="form-control form-control-lg fw-1 h-100" placeholder="Search or start a new chat"
+                                            v-model="substring">
                                         </div>
                                     </div>
                                     <div class="application-side-section-chat-container flex-grow-1">
-                                        <div v-for="(contact, index) in contacts" @click="setActiveIndex(index)" :class="(index === activeIndex) ? 'active' : ''" class="chat-preview rounded d-flex align-items-center px-3 gap-3">
+                                        <div v-for="(contact, index) in contacts" 
+                                        @click="setActiveIndex(index)" 
+                                        :class="(index === activeIndex) ? 'active' : ''" 
+                                        class="chat-preview rounded d-flex align-items-center px-3 gap-3"
+                                        v-if="contact.contactName.includes(substring)">
                                             <img :src="contact.contactImage" alt="avatar_2">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h3 class="my-0">{{contact.contactName}}</h3>
@@ -91,34 +96,29 @@
                                             </div>
                                             
                                         </div>
-                                        <div class="application-main-section-header-right fs-2 d-flex gap-4 align-items-center">
+                                        <div class="application-main-section-header-right fs-4 d-flex gap-4 align-items-center">
                                             <i class="fas fa-search"></i>
                                             <i class="fas fa-paperclip"></i>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </div>
                                     </div>
                                     <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column p-3 gap-2">
-                                        <!--<div class="msg msg-sent">
-                                            <h3>Hai portato a spasso il cane?</h3>
-                                            <h6>10/01/2021 15:15:22</h6>
-                                        </div>
-                                        <div class="msg msg-recived">
-                                            <h3>Hai portato a spasso il cane?</h3>
-                                            <h6>10/01/2021 15:15:22</h6>
-                                        </div>
-                                        <div class="msg msg-recived">
-                                            <h3>Hai portato a spasso il cane?</h3>
-                                            <h6>10/01/2021 15:15:22</h6>
-                                        </div>-->
                                         <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'">
+                                            <div class="msg-dropdown d-flex flex-column gap-1 align-items-center">
+                                                <i class="fas fa-chevron-down"></i>
+                                                <ul class="list-unstyled px-3 rounded shadow">
+                                                    <li>Delete</li>
+                                                    <li>Star</li>
+                                                </ul>
+                                            </div>
                                             <h3>{{message.message}}</h3>
-                                            <h6>10/01/2021 15:15:22</h6>
+                                            <h6>{{message.messageDate}}</h6>
                                         </div>
                             
                                     </div>
                                     <div class="application-main-section-send-message d-flex fs-2 px-3 gap-3 align-items-center">
                                         <i class="far fa-smile"></i>
-                                        <input type="text" class="form-control form-control-lg" placeholder="Write message..." v-model="newMessage" @keyup.enter="sendMessage('sender'); setTimeout(autoMessage, 1500);">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Write message..." v-model="newMessage" @keyup.enter="sendMessage('sender'); setTimeout(autoMessage, 1500)">
                                         <i class="fas fa-microphone"></i>
                                     </div>
                                 </section>

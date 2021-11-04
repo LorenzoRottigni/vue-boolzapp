@@ -102,7 +102,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                 }
             ],
             activeIndex : 0,
-            newMessage : undefined
+            newMessage : undefined,
+            substring : ''
         },
         methods: {
             setActiveIndex(newIndex){

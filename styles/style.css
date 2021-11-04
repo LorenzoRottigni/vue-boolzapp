@@ -89,6 +89,7 @@ section.application-main-section{
     height: calc(96vh - 80px - 70px);
     overflow: scroll;
 }
+
 .msg{
     width: fit-content;
     max-width: 45%;
@@ -105,6 +106,15 @@ section.application-main-section{
 }
 .msg-recived{
     background-color: white;
+}
+.msg .msg-dropdown{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.msg .msg-dropdown ul{
+    background-color: rgba(204, 200, 200, 0.8);
+    border: solid 1px rgb(204, 200, 200);
 }
 .msg h6{
     position: absolute;
