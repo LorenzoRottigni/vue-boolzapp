@@ -34,6 +34,15 @@ h6{
     color: rgb(190, 190, 190);
     font-weight: normal;
 }
+.btn-outline-success {
+    color: #8FDAFA;
+    border-color: #8FDAFA;
+}
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #8FDAFA;
+    border-color: #8FDAFA;
+}
 .overflow-ellipsis{
     white-space: nowrap; 
     overflow: hidden;
@@ -83,7 +92,9 @@ section.application-main-section{
     background-color: #FAFAFA;
     overflow: auto;
 }
-
+.application-side-section-new-chat-container{
+    width: 90%;
+}
 .application-main-section-chat-container{
     background-image: url('../images/mine.jpg');
     height: calc(96vh - 80px - 70px);
@@ -107,6 +118,12 @@ section.application-main-section{
 }
 .msg-recived{
     background-color: white;
+}
+.msg i[class="fas fa-star"]{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: gold;
 }
 .msg .msg-dropdown{
     position: absolute;

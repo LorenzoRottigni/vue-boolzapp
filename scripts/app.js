@@ -17,19 +17,22 @@ window.addEventListener('DOMContentLoaded',()=>{
                             message : 'Message sent from me',
                             messageDate : new Date().toLocaleString(),
                             sender : 'user',
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         },
                         {
                             message : 'Message recived 1',
                             messageDate : new Date().toLocaleString(),
                             sender : 'contact',
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         },
                         {
                             message : 'Message recived 2',
                             messageDate : new Date().toLocaleString(),
                             sender : 'contact',
-                            dropdownStatus : 0
+                            dropdownStatus : 0,
+                            starred: false
                         }
                     ]
                 },
@@ -40,7 +43,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 },
@@ -51,7 +55,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 },
@@ -62,7 +67,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 },
@@ -73,7 +79,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 },
@@ -84,7 +91,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 },
@@ -95,7 +103,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 },
@@ -106,14 +115,16 @@ window.addEventListener('DOMContentLoaded',()=>{
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
-                            dropdownStatus : false
+                            dropdownStatus : false,
+                            starred: false
                         }
                     ]
                 }
             ],
             activeIndex : 0,
             newMessage : undefined,
-            substring : ''
+            substring : '',
+            newChatName : undefined
         },
         methods: {
             setActiveIndex(newIndex){
@@ -129,7 +140,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                     message : this.newMessage,
                     messageDate : new Date().toLocaleString(),
                     sender : 'user',
-                    dropdownStatus : 0
+                    dropdownStatus : 0,
+                    starred: false
                 })
                 this.newMessage = undefined
             },
@@ -138,7 +150,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                     message : 'auto message',
                     messageDate : new Date().toLocaleString(),
                     sender : 'contact',
-                    dropdownStatus : 0
+                    dropdownStatus : 0,
+                    starred: false
                 })
             },
             removeMessage(index){
@@ -146,6 +159,22 @@ window.addEventListener('DOMContentLoaded',()=>{
                 this.contacts[this.activeIndex].messages.forEach(message => {
                     message.dropdownStatus = true;
                 });
+            },
+            createChat(){
+                this.contacts.unshift({
+                    contactName : this.newChatName,
+                    contactImage : './images/avatar_none.png',
+                    messages : [
+                        {
+                            message : 'Text to me please!',
+                            messageDate : new Date().toLocaleString(),
+                            dropdownStatus : false
+                        }
+                    ]
+                })
+            },
+            starMessage(index){
+                this.contacts[this.activeIndex].messages[index].starred = true
             }
         },
         mounted(){

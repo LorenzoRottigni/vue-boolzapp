@@ -62,12 +62,25 @@
                                             v-model="substring">
                                         </div>
                                     </div>
+                                    <div class="application-side-section-new-chat-container d-none align-items-center flex-column mx-auto mt-5">
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg">Username</span>
+                                            <input type="text" class="form-control" v-model="newChatName">
+                                        </div>
+                                        <button @click="createChat()" class="btn btn-lg btn-outline-success my-3">Create chat</button>
+
+
+
+
+
+
+                                    </div>
                                     <div class="application-side-section-chat-container flex-grow-1">
                                         <div v-for="(contact, index) in contacts" 
                                         @click="setActiveIndex(index)" 
                                         :class="(index === activeIndex) ? 'active' : ''" 
                                         class="chat-preview rounded d-flex align-items-center px-3 gap-3"
-                                        v-if="contact.contactName.includes(substring)">
+                                        v-if="contact.contactName.includes(substring) && contact.messages[0] != undefined">
                                             <img :src="contact.contactImage" alt="avatar_2">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h3 class="my-0">{{contact.contactName}}</h3>
@@ -77,7 +90,7 @@
                                                 {{contact.messages[0].messageDate}}
                                             </h5>
                                         </div>
-
+                                        <button class="btn btn-lg btn-outline-success d-block my-3 mx-auto">Create new chat</button>
                                     </div>
                                 </section>
                             </div>
@@ -98,15 +111,16 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </div>
                                     </div>
-                                    <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column p-3 gap-2">
+                                    <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column justify-content-end p-3 gap-2">
                                         <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'" >
+                                            <i class="fas fa-star" v-if="message.starred"></i>
                                             <!--<div class="msg-dropdown d-flex flex-column gap-1 align-items-center" @click='message.dropdownStatus = true'>-->
                                             <div class="msg-dropdown d-flex flex-column gap-1 align-items-end" @click='(message.dropdownStatus) ? message.dropdownStatus = 0 :  message.dropdownStatus = 1;'>
                                                 <i class="fas fa-chevron-down"></i>
                                                <!-- <ul class="list-unstyled px-3 rounded shadow"  :style="opacity: (message.dropdownStatus) ? 1 : 0">-->
                                                 <ul class="list-unstyled rounded shadow" :style="{opacity: message.dropdownStatus}">
                                                     <li class="px-3" @click="removeMessage(index)">Delete</li>
-                                                    <li class="px-3">Star</li>
+                                                    <li class="px-3" @click="starMessage(index)">Star</li>
                                                 </ul>
                                             </div>
                                             <h3>{{message.message}}</h3>
