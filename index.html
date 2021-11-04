@@ -30,10 +30,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <!------------------>
+                    <!-- VUE ROOT -->
+                    <!------------------>
                     <div id="application-container" class="container-fluid px-0 shadow rounded">
                         <div class="row">
                             <div class="col-5 px-0">
+                                <!------------------>
+                                <!-- SIDE SECTION -->
+                                <!------------------>
                                 <section class="application-side-section d-flex flex-column">
+                                    <!---------------------->
+                                    <!-- USER INFO HEADER -->
+                                    <!---------------------->
                                     <div class="application-side-section-header d-flex align-items-center justify-content-between px-3">
                                         <div class="application-side-section-header-left d-flex align-items-center gap-3 py-3">
                                             <img src="./images/avatar_io.jpg" alt="avatar_1">
@@ -44,8 +53,10 @@
                                             <i class="fas fa-comment-alt"></i>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </div>
-                                        
                                     </div>
+                                    <!-------------------------->
+                                    <!-- NOTIFICATION SECTION -->
+                                    <!-------------------------->
                                     <div class="application-side-section-notifications flex-shrink-0 d-flex align-items-center gap-3 px-3">
                                         <div class="circle-white flex-shrink-0">
                                             <i class="fas fa-bell-slash fs-2"></i>
@@ -55,38 +66,50 @@
                                             <h4 class="my-0 underline " @click="alert('feature not supported')">Attiva notifiche desktop</h4>
                                         </div>
                                     </div>
+                                    <!------------------------------>
+                                    <!-- SIDE SEARCH CHAT SECTION -->
+                                    <!------------------------------>
                                     <div class="application-side-section-search px-3 my-3">
                                         <div class="input-group mb-3 h-100 d-flex align-items-center">
                                             <span class="input-group-text h-100"><i class="fas fa-search fs-4"></i></span>
+                                            <!--linked to data:{substring}-->
                                             <input type="text" id="search-input" class="form-control form-control-lg fw-1 h-100" placeholder="Search or start a new chat"
                                             v-model="substring">
                                         </div>
                                     </div>
+                                    <!------------------------------------------->
+                                    <!-- SIDE CREATE NEW CHAT SECTION - hidden -->
+                                    <!------------------------------------------->
                                     <div class="application-side-section-new-chat-container d-none align-items-center flex-column mx-auto mt-5">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-text" id="inputGroup-sizing-lg">Username</span>
+                                            <!--linked to data:{newChatName}-->
                                             <input type="text" class="form-control" v-model="newChatName">
                                         </div>
+                                        <!-- click -> methods:{createChat()}-->
                                         <button @click="createChat()" class="btn btn-lg btn-outline-success my-3">Create chat</button>
-
-
-
-
-
-
                                     </div>
+                                    <!------------------------->
+                                    <!-- SIDE CHAT CONTAINER -->
+                                    <!------------------------->
                                     <div class="application-side-section-chat-container flex-grow-1">
+                                        <!-- print all data:{contacts[]}, click -> methods:{setActiveIndex()},
+                                             set Active class to active index, print only containing searched string -> default '' -->
                                         <div v-for="(contact, index) in contacts" 
                                         @click="setActiveIndex(index)" 
                                         :class="(index === activeIndex) ? 'active' : ''" 
                                         class="chat-preview rounded d-flex align-items-center px-3 gap-3"
                                         v-if="contact.contactName.includes(substring) && contact.messages[0] != undefined">
+                                            <!-- linked to data:{contacts[index].contactImage} -->
                                             <img :src="contact.contactImage" alt="avatar_2">
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- linked to data:{contacts[index].contactName} -->
                                                 <h3 class="my-0">{{contact.contactName}}</h3>
+                                                <!-- linked to data:{contacts[index].messages[0]} if existing -->
                                                 <h5 class="my-0 overflow-ellipsis" v-if='contact.messages[0] != undefined'>{{contact.messages[0].message}}</h5>
                                             </div>
                                             <h5 class="align-self-start justify-self-end time-container" v-if='contact.messages[0] != undefined'>
+                                                <!-- linked to data:{contacts[index].messages[0].messageData} -->
                                                 {{contact.messages[0].messageDate}}
                                             </h5>
                                         </div>
@@ -95,15 +118,22 @@
                                 </section>
                             </div>
                             <div class="col-7 px-0">
+                                <!------------------>
+                                <!-- MAIN SECTION -->
+                                <!------------------>
                                 <section class="application-main-section d-flex flex-column">
+                                    <!------------------------------>
+                                    <!-- CONTACT INFO MAIN HEADER -->
+                                    <!------------------------------>
                                     <div class="application-main-section-header px-3 d-flex justify-content-between">
                                         <div class="application-main-section-header-left h-100 d-flex align-items-center gap-3">
                                             <img :src="contacts[activeIndex].contactImage" alt="avatar_1">
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- linked to data:{contacts[activeIndex].contactName} -->
                                                 <h3 class="my-0">{{contacts[activeIndex].contactName}}</h3>
+                                                <!-- linked to data:{contacts[activeIndex].messages[0].messageDate} -->
                                                 <h4 class="my-0" v-if='contacts[activeIndex].messages[0] != undefined'>{{contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].messageDate}}</h4>
                                             </div>
-                                            
                                         </div>
                                         <div class="application-main-section-header-right fs-4 d-flex gap-4 align-items-center">
                                             <i class="fas fa-search"></i>
@@ -111,10 +141,16 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </div>
                                     </div>
+                                    <!------------------------->
+                                    <!-- MAIN CHAT CONTAINER -->
+                                    <!------------------------->
                                     <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column justify-content-end p-3 gap-2">
-                                        <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'" >
+                                        <!-- print all data:{contacts[activeIndex].messages[]}, assign class if sender or reciver -->
+                                        <div v-for="(message, index) in contacts[activeIndex].messages" 
+                                        class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'" >
+                                            <!-- display only if message.starred = true -->
                                             <i class="fas fa-star" v-if="message.starred"></i>
-                                            <!--<div class="msg-dropdown d-flex flex-column gap-1 align-items-center" @click='message.dropdownStatus = true'>-->
+                                            <!-- display only if message.dropdownStatus = true -->
                                             <div class="msg-dropdown d-flex flex-column gap-1 align-items-end" @click='(message.dropdownStatus) ? message.dropdownStatus = 0 :  message.dropdownStatus = 1;'>
                                                 <i class="fas fa-chevron-down"></i>
                                                <!-- <ul class="list-unstyled px-3 rounded shadow"  :style="opacity: (message.dropdownStatus) ? 1 : 0">-->
@@ -126,8 +162,10 @@
                                             <h3>{{message.message}}</h3>
                                             <h6>{{message.messageDate}}</h6>
                                         </div>
-                            
                                     </div>
+                                    <!-------------------------------->
+                                    <!-- MAIN SEND MESSAGE SECTION  -->
+                                    <!-------------------------------->
                                     <div class="application-main-section-send-message d-flex fs-2 px-3 gap-3 align-items-center">
                                         <i class="far fa-smile"></i>
                                         <input type="text" class="form-control form-control-lg" placeholder="Write message..." v-model="newMessage" @keyup.enter="sendMessage('sender'); setTimeout(autoMessage, 1500)">
