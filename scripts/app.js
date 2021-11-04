@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
                             messageDate : new Date().toLocaleString(),
                             sender : 'contact',
-                            dropdownStatus : false
+                            dropdownStatus : 0
                         }
                     ]
                 },
@@ -128,19 +128,18 @@ window.addEventListener('DOMContentLoaded',()=>{
                 this.contacts[this.activeIndex].messages.push({
                     message : this.newMessage,
                     messageDate : new Date().toLocaleString(),
-                    sender : 'user'
+                    sender : 'user',
+                    dropdownStatus : 0
                 })
                 this.newMessage = undefined
             },
             autoMessage(){
-
                 this.contacts[this.activeIndex].messages.push({
                     message : 'auto message',
                     messageDate : new Date().toLocaleString(),
-                    sender : 'contact'
+                    sender : 'contact',
+                    dropdownStatus : 0
                 })
-                this.addDropdownListeners()
-                
             }
         },
         mounted(){

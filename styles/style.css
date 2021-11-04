@@ -109,18 +109,22 @@ section.application-main-section{
 }
 .msg .msg-dropdown{
     position: absolute;
-    top: 10px;
-    right: 0px;
+    top: 15px;
+    right: 15px;
 }
 
 .msg .msg-dropdown ul{
-    background-color: rgba(204, 200, 200, 0.8);
-    border: solid 1px rgb(204, 200, 200);
+    background-color: rgba(245, 243, 243, 0.8);
+    border: solid 1px black;
     opacity: 0;
-    transition: 1s
+    transition: 0.5s;
 }
-.msg:hover .msg-drodown ul{
-    opacity: 1;
+.msg .msg-dropdown ul li{
+    border-bottom: solid 1px black;
+    text-align: center;
+}
+.msg .msg-dropdown ul li:last-of-type{
+    border-bottom: unset;
 }
 .msg h6{
     position: absolute;
