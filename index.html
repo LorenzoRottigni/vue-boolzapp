@@ -46,8 +46,8 @@
                                         </div>
                                         
                                     </div>
-                                    <div class="application-side-section-notifications d-flex align-items-center gap-3 px-3">
-                                        <div class="circle-white">
+                                    <div class="application-side-section-notifications flex-shrink-0 d-flex align-items-center gap-3 px-3">
+                                        <div class="circle-white flex-shrink-0">
                                             <i class="fas fa-bell-slash fs-2"></i>
                                         </div>
                                         <div>
@@ -71,9 +71,9 @@
                                             <img :src="contact.contactImage" alt="avatar_2">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h3 class="my-0">{{contact.contactName}}</h3>
-                                                <h5 class="my-0 overflow-ellipsis">{{contact.messages[0].message}}</h5>
+                                                <h5 class="my-0 overflow-ellipsis" v-if='contact.messages[0] != undefined'>{{contact.messages[0].message}}</h5>
                                             </div>
-                                            <h5 class="align-self-start justify-self-end time-container">
+                                            <h5 class="align-self-start justify-self-end time-container" v-if='contact.messages[0] != undefined'>
                                                 {{contact.messages[0].messageDate}}
                                             </h5>
                                         </div>
@@ -88,8 +88,7 @@
                                             <img :src="contacts[activeIndex].contactImage" alt="avatar_1">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h3 class="my-0">{{contacts[activeIndex].contactName}}</h3>
-                                             
-                                                <h4 class="my-0">{{contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].messageDate}}</h4>
+                                                <h4 class="my-0" v-if='contacts[activeIndex].messages[0] != undefined'>{{contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].messageDate}}</h4>
                                             </div>
                                             
                                         </div>
@@ -100,15 +99,14 @@
                                         </div>
                                     </div>
                                     <div class="application-main-section-chat-container flex-grow-1 d-flex flex-column p-3 gap-2">
-                                        <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'">
+                                        <div v-for="(message, index) in contacts[activeIndex].messages" class="msg" :class="(message.sender === 'user') ? 'msg-sent' : 'msg-recived'" >
                                             <!--<div class="msg-dropdown d-flex flex-column gap-1 align-items-center" @click='message.dropdownStatus = true'>-->
                                             <div class="msg-dropdown d-flex flex-column gap-1 align-items-end" @click='(message.dropdownStatus) ? message.dropdownStatus = 0 :  message.dropdownStatus = 1;'>
                                                 <i class="fas fa-chevron-down"></i>
                                                <!-- <ul class="list-unstyled px-3 rounded shadow"  :style="opacity: (message.dropdownStatus) ? 1 : 0">-->
-                                                <ul class="list-unstyled px-3 rounded shadow" :style="{opacity: message.dropdownStatus}"
-                                                    @mouseout="message.dropdownStatus = 0 " >
-                                                    <li">Delete</li>
-                                                    <li>Star</li>
+                                                <ul class="list-unstyled rounded shadow" :style="{opacity: message.dropdownStatus}">
+                                                    <li class="px-3" @click="removeMessage(index)">Delete</li>
+                                                    <li class="px-3">Star</li>
                                                 </ul>
                                             </div>
                                             <h3>{{message.message}}</h3>

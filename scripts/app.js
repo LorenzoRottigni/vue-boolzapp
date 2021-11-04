@@ -14,19 +14,19 @@ window.addEventListener('DOMContentLoaded',()=>{
                     contactImage : './images/avatar_1.jpg',
                     messages : [
                         {
-                            message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
+                            message : 'Message sent from me',
                             messageDate : new Date().toLocaleString(),
                             sender : 'user',
                             dropdownStatus : false
                         },
                         {
-                            message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
+                            message : 'Message recived 1',
                             messageDate : new Date().toLocaleString(),
                             sender : 'contact',
                             dropdownStatus : false
                         },
                         {
-                            message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
+                            message : 'Message recived 2',
                             messageDate : new Date().toLocaleString(),
                             sender : 'contact',
                             dropdownStatus : 0
@@ -140,6 +140,12 @@ window.addEventListener('DOMContentLoaded',()=>{
                     sender : 'contact',
                     dropdownStatus : 0
                 })
+            },
+            removeMessage(index){
+                this.contacts[this.activeIndex].messages.splice(index, true)
+                this.contacts[this.activeIndex].messages.forEach(message => {
+                    message.dropdownStatus = true;
+                });
             }
         },
         mounted(){
