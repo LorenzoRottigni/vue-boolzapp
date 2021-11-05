@@ -3,21 +3,26 @@ body{
     position: relative;
     font-family: 'Roboto', sans-serif;
 }
+
 header{
     height: 10vh;
     background-color: #0B9588;
 }
+
 img{
     height: 60px;
     width: 60px;
     border-radius: 50%;
 }
+
 i{
     color: #B1B1B1
 }
-i:hover{
-    color: black
-}
+
+/***********/
+/* headers */
+/***********/
+
 h3{
     font-size: 18px;
     font-weight: normal;
@@ -37,24 +42,27 @@ h6{
     color: rgb(190, 190, 190);
     font-weight: normal;
 }
+
+/*****************/
+/* class utility */
+/*****************/
+
 .btn-outline-success {
     color: #8FDAFA;
     border-color: #8FDAFA;
 }
-.btn-outline-success:hover {
-    color: #fff;
-    background-color: #8FDAFA;
-    border-color: #8FDAFA;
-}
+
 .overflow-ellipsis{
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 250px; 
 }
+
 .underline{
     text-decoration: underline;
 }
+
 .circle-white{
     background-color: white;
     border-radius: 50%;
@@ -64,23 +72,40 @@ h6{
     align-items: center;
     justify-content: center;
 }
+
 .circle-white i{
     color: #8FDAFA;
 }
+
 #application-container{
     background-color: white;
     margin-top: -8vh;
 }
+
+/****************************************/
+/* chat preview section && main section */
+/****************************************/
+
 section.application-side-section,
 section.application-main-section{
     height: 96vh;
     background-color: white;
 }
+
+/************************/
+/* headers of sections */
+/************************/
+
 .application-side-section-header,
 .application-main-section-header{
     height: 80px;
     background-color: #EAEAEA;
 }
+
+/*************************************/
+/* side section notification section */
+/*************************************/
+
 .application-side-section-notifications{
     height: 100px;
     background-color: #8FDAFA;
@@ -88,26 +113,72 @@ section.application-main-section{
 .application-side-section-notifications h4{
     cursor: pointer;
 }
-.application-side-section-notifications h4:hover{
-    color: blue;
-}
+
+/***********************/
+/* side search section */
+/***********************/
+
 .application-side-section-search{
     height: 50px;
     background-color: white;
 }
 
+/****************************/
+/* side chat list container */
+/****************************/
+
 .application-side-section-chat-container{
     background-color: #FAFAFA;
     overflow: auto;
 }
+
+/* side chat list container list item */
+
+.chat-preview{
+    height: 90px;
+    border-top: solid 1px #e9ebe9;
+    border-right: solid 1px #e9ebe9;
+    border-bottom: solid 1px #e9ebe9;
+    width: 98%;
+    position: relative;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+/* list item last messagge top right badge */
+
+.time-container{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    text-align: right;
+}
+
+/* selected list item */
+
+.active{
+    background-color: #e9ebe9;
+}
+
+/************************************/
+/* create new chat hidden container */
+/************************************/
+
 .application-side-section-new-chat-container{
     width: 90%;
 }
+
+/******************************/
+/* active main chat container */
+/******************************/
+
 .application-main-section-chat-container{
     background-image: url('../images/mine.jpg');
     height: calc(96vh - 80px - 70px);
     overflow: scroll;
 }
+
+/* main chat container message */
 
 .msg{
     width: fit-content;
@@ -120,19 +191,31 @@ section.application-main-section{
     flex-shrink: 0;
     position: relative;
 }
+
+/* message sent styles */
+
 .msg-sent{
     background-color: #d3f9ba;
     align-self: flex-end;
 }
+
+/* message recived styles */
+
 .msg-recived{
     background-color: white;
 }
+
+/* star message icon */
+
 .msg i[class="fas fa-star"]{
     position: absolute;
     top: 10px;
     left: 10px;
     color: gold;
 }
+
+/* msg chevron-down icon */
+
 .msg .msg-dropdown{
     position: absolute;
     top: 10px;
@@ -140,53 +223,43 @@ section.application-main-section{
     z-index: 100;
 }
 
+/* msg chevron-down icon list */
+
 .msg .msg-dropdown ul{
     background-color: rgba(245, 243, 243, 0.9);
     border: solid 1px #B1B1B1;
     opacity: 0;
     transition: 0.5s;
 }
+
+/* msg chevron-down icon list item */
+
 .msg .msg-dropdown ul li{
     border-bottom: solid 1px #B1B1B1;
     text-align: center;
 }
-.msg .msg-dropdown ul li:hover{
-    background-color: rgba(211, 249, 186, 0.6);Message recived 1
-}
-.msg .msg-dropdown ul li:last-of-type{
-    border-bottom: unset;
-}
+
+/* msg text content */
+
 .msg h6{
     position: absolute;
     bottom: 0;
     right: 10px;
 }
+
+/*****************************/
+/* main send message section */
+/*****************************/
+
 .application-main-section-send-message{
     height: 70px;
     background-color: #F3EEEA;
 }
+
 .application-main-section-send-message i{
     color: #6B7375
 }
-.chat-preview{
-    height: 90px;
-    border-top: solid 1px #e9ebe9;
-    border-right: solid 1px #e9ebe9;
-    border-bottom: solid 1px #e9ebe9;
-    width: 98%;
-    position: relative;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-}
-.active{
-    background-color: #e9ebe9;
-}
-.time-container{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    text-align: right;
-}
+
 
 
 @media only screen and (max-width: 992px) {

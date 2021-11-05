@@ -24,3 +24,20 @@
 .msg-recived{
     animation: fade-left 1s 1;
 }
+i:hover{
+    color: black
+}
+.msg .msg-dropdown ul li:hover{
+    background-color: rgba(211, 249, 186, 0.6);
+}
+.msg .msg-dropdown ul li:last-of-type{
+    border-bottom: unset;
+}
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #8FDAFA;
+    border-color: #8FDAFA;
+}
+.application-side-section-notifications h4:hover{
+    color: blue;
+}
