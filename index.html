@@ -111,7 +111,7 @@
                                         @click="setActiveIndex(index)" 
                                         :class="(index === activeIndex) ? 'active' : ''" 
                                         class="chat-preview rounded d-flex align-items-center px-3 gap-3"
-                                        v-if="contact.contactName.includes(substring) && contact.messages[0] != undefined">
+                                        v-if="contact.contactName.toLowerCase().includes(substring) && contact.messages[0] != undefined">
                                             <!-- linked to data:{contacts[index].contactImage} -->
                                             <img :src="contact.contactImage" alt="avatar_2">
                                             <div class="d-flex flex-column justify-content-center">
