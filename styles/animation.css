@@ -1,0 +1,26 @@
+@keyframes fade-left {
+    0%{
+        margin-left: -50%;
+        opacity: 0;
+    }
+    100%{
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+@keyframes fade-right {
+    0%{
+        margin-right: -50%;
+        opacity: 0;
+    }
+    100%{
+        margin-right: 0;
+        opacity: 1;
+    }
+}
+.msg-sent{
+    animation: fade-right 1s 1;
+}
+.msg-recived{
+    animation: fade-left 1s 1;
+}

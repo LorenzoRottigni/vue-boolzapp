@@ -15,21 +15,21 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Message sent from me',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             sender : 'user',
                             dropdownStatus : false,
                             starred: false
                         },
                         {
                             message : 'Message recived 1',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             sender : 'contact',
                             dropdownStatus : false,
                             starred: false
                         },
                         {
                             message : 'Message recived 2',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             sender : 'contact',
                             dropdownStatus : 0,
                             starred: false
@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -90,7 +90,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -114,7 +114,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi fugit distinctio autem in, repellat facilis doloremque minima. Necessitatibus atque, adipisci quo iusto quam aliquid fuga sed veniam ipsum magni eligendi.',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false,
                             starred: false
                         }
@@ -138,7 +138,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             sendMessage(sender) {
                 this.contacts[this.activeIndex].messages.push({
                     message : this.newMessage,
-                    messageDate : new Date().toLocaleString(),
+                    messageDate : dayjs().format('LLLL'),
                     sender : 'user',
                     dropdownStatus : 0,
                     starred: false
@@ -148,7 +148,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             autoMessage(){
                 this.contacts[this.activeIndex].messages.push({
                     message : 'auto message',
-                    messageDate : new Date().toLocaleString(),
+                    messageDate : dayjs().format('LLLL'),
                     sender : 'contact',
                     dropdownStatus : 0,
                     starred: false
@@ -167,7 +167,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     messages : [
                         {
                             message : 'Text to me please!',
-                            messageDate : new Date().toLocaleString(),
+                            messageDate : dayjs().format('LLLL'),
                             dropdownStatus : false
                         }
                     ]

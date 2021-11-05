@@ -1,4 +1,7 @@
+
 window.addEventListener('DOMContentLoaded',()=>{
+
+
     const createChatButton = document.querySelector('.application-side-section-chat-container button')
     const chatContainer = document.querySelector('.application-side-section-chat-container')
     const newChatContainer = document.querySelector('.application-side-section-new-chat-container')
@@ -21,6 +24,25 @@ window.addEventListener('DOMContentLoaded',()=>{
     mainSearchIcon.addEventListener('click',()=>{
         inputSearch.focus()
     })
+
+
+    
+    const mainChatContainer = document.querySelector('.application-main-section-chat-container')
+    const msg = document.querySelectorAll('.application-main-section-chat-container .msg')
+
+    /*codice funzionante*/
+    window.addEventListener('keyup', ({key}) => {
+        if (key === "Enter") {
+             mainChatContainer.scrollTop = mainChatContainer.scrollHeight
+        }
+    })
+
+    /*codice non funzionante*/
+    msg.forEach(message => {
+        message.addEventListener('load', ()=>{
+            mainChatContainer.scrollTop = mainChatContainer.scrollHeight
+        })
+    });
 })
 
 
