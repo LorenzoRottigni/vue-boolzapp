@@ -26,23 +26,9 @@ window.addEventListener('DOMContentLoaded',()=>{
     })
 
 
-    
+
     const mainChatContainer = document.querySelector('.application-main-section-chat-container')
     const msg = document.querySelectorAll('.application-main-section-chat-container .msg')
-
-    /*codice funzionante*/
-    window.addEventListener('keyup', ({key}) => {
-        if (key === "Enter") {
-             mainChatContainer.scrollTop = mainChatContainer.scrollHeight
-        }
-    })
-
-    /*codice non funzionante*/
-    msg.forEach(message => {
-        message.addEventListener('load', ()=>{
-            mainChatContainer.scrollTop = mainChatContainer.scrollHeight
-        })
-    });
 })
 
 

@@ -182,6 +182,10 @@ window.addEventListener('DOMContentLoaded',()=>{
         },
         mounted(){
 
+        },
+        updated(){
+            const mainChatContainer = document.querySelector('.application-main-section-chat-container')
+            mainChatContainer.scrollTop = mainChatContainer.scrollHeight
         }
     })
 })
